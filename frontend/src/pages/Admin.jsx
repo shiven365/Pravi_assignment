@@ -27,14 +27,14 @@ export default function Admin() {
   // Fetch data from backend
   useEffect(() => {
     if (token) {
-      fetch('http://localhost:8000/api/admin/projects', {
+      fetch('https://pravi-assignment.onrender.com/api/admin/projects', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())
       .then(data => setDbProjects(data))
       .catch(console.error);
 
-      fetch('http://localhost:8000/api/admin/assets', {
+      fetch('https://pravi-assignment.onrender.com/api/admin/assets', {
         headers: { 'Authorization': `Bearer ${token}` }
       })
       .then(res => res.json())
@@ -102,7 +102,7 @@ export default function Admin() {
     const fullReason = note ? `${reason} (Note: ${note})` : reason;
     
     try {
-      const res = await fetch(`http://localhost:8000/api/admin/assets/${selectedTask.assetId}`, {
+      const res = await fetch(`https://pravi-assignment.onrender.com/api/admin/assets/${selectedTask.assetId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify({
@@ -114,7 +114,7 @@ export default function Admin() {
         const err = await res.json();
         alert("Error: " + err.detail);
       } else {
-        const data = await (await fetch('http://localhost:8000/api/admin/assets', { headers: { 'Authorization': `Bearer ${token}` } })).json();
+        const data = await (await fetch('https://pravi-assignment.onrender.com/api/admin/assets', { headers: { 'Authorization': `Bearer ${token}` } })).json();
         setDbAssets(data);
       }
     } catch(err) {
@@ -131,7 +131,7 @@ export default function Admin() {
     e.preventDefault();
     if (editingItem.type === 'asset') {
       try {
-        const res = await fetch(`http://localhost:8000/api/admin/assets/${editingItem.id}`, {
+        const res = await fetch(`https://pravi-assignment.onrender.com/api/admin/assets/${editingItem.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ export default function Admin() {
           const err = await res.json();
           alert("Error: " + err.detail);
         } else {
-          const data = await (await fetch('http://localhost:8000/api/admin/assets', { headers: { 'Authorization': `Bearer ${token}` } })).json();
+          const data = await (await fetch('https://pravi-assignment.onrender.com/api/admin/assets', { headers: { 'Authorization': `Bearer ${token}` } })).json();
           setDbAssets(data);
           setEditingItem(null);
         }
@@ -157,7 +157,7 @@ export default function Admin() {
     } else {
       // Update Project on real backend
       try {
-        const res = await fetch(`http://localhost:8000/api/admin/projects/${editingItem.id}`, {
+        const res = await fetch(`https://pravi-assignment.onrender.com/api/admin/projects/${editingItem.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ export default function Admin() {
           alert("Error: " + err.detail);
         } else {
           // Refresh projects
-          const data = await (await fetch('http://localhost:8000/api/admin/projects', { headers: { 'Authorization': `Bearer ${token}` } })).json();
+          const data = await (await fetch('https://pravi-assignment.onrender.com/api/admin/projects', { headers: { 'Authorization': `Bearer ${token}` } })).json();
           setDbProjects(data);
           setEditingItem(null);
         }
@@ -272,13 +272,13 @@ export default function Admin() {
                           nextYear.setFullYear(nextYear.getFullYear() + 1);
                           const nextStr = nextYear.toISOString().split('T')[0];
                           try {
-                            const res = await fetch(`http://localhost:8000/api/admin/assets/${task.assetId}`, {
+                            const res = await fetch(`https://pravi-assignment.onrender.com/api/admin/assets/${task.assetId}`, {
                               method: 'PUT',
                               headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                               body: JSON.stringify({ next_inspection_date: nextStr, reason: "Inspection marked completed." })
                             });
                             if (res.ok) {
-                              const data = await (await fetch('http://localhost:8000/api/admin/assets', { headers: { 'Authorization': `Bearer ${token}` } })).json();
+                              const data = await (await fetch('https://pravi-assignment.onrender.com/api/admin/assets', { headers: { 'Authorization': `Bearer ${token}` } })).json();
                               setDbAssets(data);
                             } else {
                               const err = await res.json(); alert(err.detail);

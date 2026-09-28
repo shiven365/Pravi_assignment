@@ -9,7 +9,7 @@ export default function ProjectDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/public/projects/${id}`)
+    fetch(`https://pravi-assignment.onrender.com/api/public/projects/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Project not found');
         return res.json();

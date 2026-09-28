@@ -11,12 +11,12 @@ export default function IndiaMapPage() {
   const [tooltipContent, setTooltipContent] = useState("");
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/public/projects')
+    fetch('https://pravi-assignment.onrender.com/api/public/projects')
       .then(res => res.json())
       .then(setDbProjects)
       .catch(console.error);
 
-    fetch('http://localhost:8000/api/public/assets')
+    fetch('https://pravi-assignment.onrender.com/api/public/assets')
       .then(res => res.json())
       .then(setDbAssets)
       .catch(console.error);

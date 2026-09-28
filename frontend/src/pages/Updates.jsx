@@ -5,7 +5,7 @@ export default function Updates() {
   const [latestProjects, setLatestProjects] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/public/projects')
+    fetch('https://pravi-assignment.onrender.com/api/public/projects')
       .then(res => res.json())
       .then(data => {
         // Sort by start_date descending (newest first), fallback to ID for deterministic ordering

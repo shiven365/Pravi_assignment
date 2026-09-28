@@ -14,12 +14,12 @@ export default function Home() {
   const [filterSector, setFilterSector] = useState('All');
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/public/projects')
+    fetch('https://pravi-assignment.onrender.com/api/public/projects')
       .then(res => res.json())
       .then(data => setDbProjects(data))
       .catch(console.error);
 
-    fetch('http://localhost:8000/api/public/assets')
+    fetch('https://pravi-assignment.onrender.com/api/public/assets')
       .then(res => res.json())
       .then(data => setDbAssets(data))
       .catch(console.error);
