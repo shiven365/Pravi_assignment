@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { Shield, Key, AlertCircle } from 'lucide-react';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('central@govinfra.in');
   const [password, setPassword] = useState('password'); // Demo default
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -43,6 +43,13 @@ export default function Login() {
           </div>
 
           <div className="p-8">
+            <div className="mb-6 bg-blue-50 border border-blue-200 p-4 rounded-lg">
+              <h3 className="text-xs font-bold text-blue-800 uppercase tracking-wider mb-2">Demo Credentials (For Interviewer)</h3>
+              <p className="text-sm text-blue-900 font-mono mb-1"><strong>Email:</strong> central@govinfra.in</p>
+              <p className="text-sm text-blue-900 font-mono"><strong>Pass:</strong> password</p>
+              <p className="text-xs text-blue-700 mt-2 italic">These are pre-filled below for convenience.</p>
+            </div>
+
             {error && (
               <div className="mb-6 bg-rose-50 border border-rose-200 text-rose-700 p-3 rounded-lg flex items-start gap-2 text-sm">
                 <AlertCircle className="w-5 h-5 flex-shrink-0" />
